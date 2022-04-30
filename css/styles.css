@@ -23,12 +23,9 @@
   --rosa2: #ff69b4;
   --negroL: #1A1B1D;
   --negro: #000;
-
-  /*Aquí se pueden añadir diferentes propiedades que se quieran o necesiten configurar en el mismo CSS*/
 }
 
-/*GLOBAL*/
-
+/*GLOBALES*/
 html {
   font-size: 62.5%; /*Con estas lineas "html y body" me permite manejar bien los rem*/
   box-sizing: border-box; /*Hack para box model*/
@@ -36,13 +33,6 @@ html {
   /*El y mandatory indica que se hará scroll de arriba hacia abajo*/
 }
 
-/*Para indicar donde se dentendrá el scroll*/
-.servicios,
-.navegacion-principal,
-.formulario {
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-}
 
 *,
 *:before,
@@ -51,30 +41,35 @@ html {
   box-sizing: inherit;
 }
 
+/*Para indicar en que secciones se dentendrá el scroll*/
+.servicios,
+.navegacion-principal,
+.formulario {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+
 body {
   font-size: 16px; /*1rem = 10px*/ /*Con esta linea en vez de poner 200px solo pongo 20 rem y se adapta
     bien a distintos dispositivos con distintos tamaños*/
 
   font-family: 'Krub', sans-serif;
-  background-image: linear-gradient(
-    to top,
-    var(--purpura2) 0%,
-    var(--negro) 100%
-  ); /*Para obtener degradados: primero dirección, luego el color con el que iniciará
+  background-image: linear-gradient(to top,var(--purpura2) 0%,var(--negro) 100%); /*Para obtener degradados: primero dirección, luego el color con el que iniciará
    y luego el color que tomará en la dirección que se definió*/
-}
+
+  }
 
 .titulo span{
   font-size: 2rem;
   color: var(--lila);
-  /*Efecto máquina de escribir*/ 
 }
 
 .contenedor {
+  margin: 0 auto; /*top, right, bottom y left*//*arriba-abajo - izq-derecha*/
   max-width: 120rem;
-  margin: 0 auto; /*top, right, bottom y left*/
-} /*arriba-abajo - izq-derecha*/
-
+}                   
+  
 .boton {
   background-color: var(--purpura2);
   color: var(--blanco);
@@ -91,8 +86,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  .boton {
-    
+  .boton {  
     width: auto;
   }
 }
@@ -129,8 +123,6 @@ h3 {
   color: var(--blanco);
 }
 
-
-
 h1,
 h2,
 h3 {
@@ -138,7 +130,6 @@ h3 {
 }
 
 /*UTILIDADES*/
-
 .w-sm-100 {
     width: 100%;
 }
@@ -159,13 +150,13 @@ h3 {
 
 /*NAVEGACIÓN PRINCIPAL*/
 .nav-bg {
-  background-color: var(--purpura2); /**/
- 
+  background-color: var(--purpura2); 
 }
 
 .navegacion-principal {
   display: flex;
   flex-direction: column;
+  align-items: center;
  
 }
 
@@ -192,21 +183,80 @@ h3 {
   color: var(--blanco);
   font-weight: bold;
 }
+.navegacion-principal a:last-of-type {
+  margin-bottom: 0;
+}
+
+@media (min-width:768px) {
+  .navegacion-principal a{
+      margin-bottom: 0;
+  }
+}
+
+@media (min-width: 280px) {
+  /*Efecto máquina de escribir para dispositivos celulares*/
+  h1{
+    font-size: 1.7rem;
+    white-space: nowrap; /*Para que no rompa la linea de los espacios en blanco*/
+    border-right: 0.4rem solid; /*Para que aparezca el puntero*/
+    width: 29ch; /*Número de caracteres que tiene la linea*/
+    animation: typing 2s steps(27),
+    blink .5s infinite step-end alternate;
+    overflow:hidden;
+    margin: 2rem auto; /*Da el efecto de desplazamiento mientras se escribe, permite centrar el texto*/
+    display: block;
+    }
+
+  @keyframes typing{
+  from  {width: 0}
+  }
+
+  @keyframes blink { /*Destello de color transparente entre cada espacio por caracter*/
+  from, to { border-color: transparent}
+  50%  {border-color: var(--lila)}
+  }
+  /*Aquí termina efecto máquina de escribir*/
+  }
 
 @media (min-width: 320px) {
+  /*Efecto máquina de escribir para dispositivos celulares*/
+  h1{
+    font-size: 2.3rem;
+    white-space: nowrap; /*Para que no rompa la linea de los espacios en blanco*/
+    border-right: 0.4rem solid; /*Para que aparezca el puntero*/
+    width: 27ch; /*Número de caracteres que tiene la linea*/
+    animation: typing 2s steps(27),
+    blink .5s infinite step-end alternate;
+    overflow:hidden;
+    margin: 2rem auto; /*Da el efecto de desplazamiento mientras se escribe, permite centrar el texto*/
+    display: block;
+ 
+    }
 
-      /*Efecto máquina de escribir para dispositivos celulares*/
+  @keyframes typing{
+  from  {width: 0}
+  }
+
+  @keyframes blink { /*Destello de color transparente entre cada espacio por caracter*/
+  from, to { border-color: transparent}
+  50%  {border-color: var(--lila)}
+  }
+  /*Aquí termina efecto máquina de escribir*/
+  }
+
+@media (min-width: 420px) {
+      /*Efecto máquina de escribir para pantallas, tabletas*/
       h1{
-        font-size: 2.3rem;
+        font-size: 3.8rem;
         white-space: nowrap; /*Para que no rompa la linea de los espacios en blanco*/
         border-right: 0.4rem solid; /*Para que aparezca el puntero*/
-        width: 27ch; /*Número de caracteres que tiene la linea*/
-        animation: typing 2s steps(27),
+        width: 23ch; /*Número de caracteres que tiene la linea*/
+        animation: typing 2s steps(23),
         blink .5s infinite step-end alternate;
         overflow:hidden;
         margin: 2rem auto; /*Da el efecto de desplazamiento mientras se escribe, permite centrar el texto*/
         display: block;
-     
+    
         }
 
       @keyframes typing{
@@ -218,33 +268,7 @@ h3 {
       50%  {border-color: var(--lila)}
       }
       /*Aquí termina efecto máquina de escribir*/
-      }
-
-      @media (min-width: 420px) {
-           /*Efecto máquina de escribir para pantallas, tabletas*/
-          h1{
-            font-size: 3.8rem;
-            white-space: nowrap; /*Para que no rompa la linea de los espacios en blanco*/
-            border-right: 0.4rem solid; /*Para que aparezca el puntero*/
-            width: 23ch; /*Número de caracteres que tiene la linea*/
-            animation: typing 2s steps(23),
-            blink .5s infinite step-end alternate;
-            overflow:hidden;
-            margin: 2rem auto; /*Da el efecto de desplazamiento mientras se escribe, permite centrar el texto*/
-            display: block;
-        
-            }
-
-          @keyframes typing{
-          from  {width: 0}
-          }
-
-          @keyframes blink { /*Destello de color transparente entre cada espacio por caracter*/
-          from, to { border-color: transparent}
-          50%  {border-color: var(--lila)}
-          }
-          /*Aquí termina efecto máquina de escribir*/
-       }
+   }
       
 
 /*IMAGEN butterfly (sustituye a la imagen hero)*/
@@ -260,18 +284,12 @@ h3 {
 
 .contenido-hero {
   position: absolute;
-  background-color: rgb(
-    0,
-    0,
-    0,
-    0.7
-  ); /*el punto en la cuarta posición indica el nivel de transparencia ANTERIOR*/
+  background-color: rgb(0,0,0,0.7); /*el punto en la cuarta posición indica el nivel de transparencia ANTERIOR*/
   background-color: rgb(0 0 0 / 70%); /*La diagonal implica la transparencia*/
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-
   display: flex; /*A partir de aqui sirve para alinear vertical y horizontalmente*/
   flex-direction: column;
   align-items: center; /*Alinea horizontalmente*/
@@ -290,15 +308,6 @@ h3 {
 }
 
 /*SERVICIOS*/
-@media (min-width: 768px) {
-  .servicios {
-    display: grid; /*Activa las propiedades de CSS grid*/
-    grid-template-columns: 33.3% 33.3% 33.3%; /*Define el tamaño de las columnas*/
-    /*También se puede definir como grid-template-columns: 1fr 1fr 1fr; que divide el contenedor en 3 fracciones*/
-    /*opción 2: grid-template-columns: repeat(3, 1f);*/
-    column-gap: 1rem; /*Separación entre columnas*/
-  }
-}
 .servicio {
   display: flex;
   flex-direction: column; /*Cambia la dirección a columnas en Flexbox*/
@@ -325,13 +334,19 @@ h3 {
   align-items: center; /*Permite alineas verticalmente*/
 }
 
+@media (min-width: 768px) {
+  .servicios {
+    display: grid; /*Activa las propiedades de CSS grid*/
+    grid-template-columns: 33.3% 33.3% 33.3%; /*Define el tamaño de las columnas*/
+    /*También se puede definir como grid-template-columns: 1fr 1fr 1fr; que divide el contenedor en 3 fracciones*/
+    /*opción 2: grid-template-columns: repeat(3, 1f);*/
+    column-gap: 1rem; /*Separación entre columnas*/
+  }
+}
 /*FORMULARIO*/
 .formulario {
   background-color: var(--lila);
-  width: min(
-    60rem,
-    100%
-  ); /*Utiliza el valor del más pequeño con respecto al 100%*/
+  width: min(60rem,100%); /*Utiliza el valor del más pequeño con respecto al 100%*/
   margin: 0 auto; /*Centra el elemento horizontalmente*/
   padding: 2rem;
   border-radius: 1rem;
@@ -354,7 +369,7 @@ h3 {
     .contenedor-campos {
         display: grid;
         grid-template-columns: repeat(2, 1fr); /*Define dos columnas iguales*/
-        grid-template-rows: auto auto 18rem; /*Define el número de filas y su tamaño*/
+        grid-template-rows: auto auto 10rem; /*Define el número de filas y su tamaño*/
         column-gap: 1rem; /*Separación de columnas*/
     
     }
@@ -390,7 +405,7 @@ h3 {
 }
 
 .campo textarea {
-    height: 15rem;
+    height: 8rem;
 }
 
 /*FOOTER*/
